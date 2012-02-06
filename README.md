@@ -3,8 +3,9 @@ RedisDashboard
 Simple tool to see data stored in your Redis DB.  
 
 ###Requires
-[Jamm\\MVC](https://github.com/jamm/MVC)  
 [Jamm\\Memory](https://github.com/jamm/Memory)  
+[Jamm\\MVC](https://github.com/jamm/MVC)  
+[Jamm\\HTTP](https://github.com/jamm/HTTP)  
 
 ###Example of Front Controller
 
