@@ -1,0 +1,20 @@
+{% extends "main_layout.twig" %}
+{% block content %}
+{% if databases %}
+	<h1>Databases</h1>
+	<ul>
+	{% for database in databases %}
+		<li><a href="{{ base_url }}/db/{{ database.title }}">{{ database.title }}</a></li>
+	{% endfor %}
+	</ul>
+{% endif %}
+
+{% if stats %}
+	<h1>Stats:</h1>
+	<ul>
+	{% for stat in stats %}
+		<li><b>{{ stat.title }}</b>: {{ stat.value }}</li>
+	{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}

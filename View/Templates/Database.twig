@@ -1,0 +1,14 @@
+{% extends "main_layout.twig" %}
+{% block title %}Database {{database.title}} - Redis Dashboard{% endblock %}
+{% block content %}
+<h1>ID: {{ database.title }}</h1>
+<h2>Keys: {{ database.keys_count }}</h2>
+
+{% if database.keys %}
+	<ul>
+	{% for key in database.keys %}
+		<li><a href="{{ base_url }}/key/{{ key|url_encode() }}/in/{{ database.title }}">{{ key }}</a></li>
+	{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}
