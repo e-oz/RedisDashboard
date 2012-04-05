@@ -40,6 +40,7 @@ class DBKey
 				break;
 			case 'hash':
 				$Key->elements_count = $this->Redis->hLen($Key->title);
+				break;
 			default:
 				$Key->value = $this->Redis->Get($Key->title);
 		}
