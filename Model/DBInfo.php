@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\Model;
-
 class DBInfo
 {
 	private $Redis;
@@ -23,7 +22,6 @@ class DBInfo
 		{
 			return false;
 		}
-
 		$Database->keys_count = $this->Redis->DBsize();
 		$Database->keys       = $this->Redis->Keys('*');
 		$this->Redis->Select(0);

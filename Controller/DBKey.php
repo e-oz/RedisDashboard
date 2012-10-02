@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\Controller;
-
 class DBKey implements \Jamm\MVC\Controllers\IController
 {
 	private $Redis;
@@ -11,9 +10,9 @@ class DBKey implements \Jamm\MVC\Controllers\IController
 								\Jamm\MVC\Controllers\IRequestParser $RequestParser,
 								\Jamm\MVC\Views\IPageRenderer $PageRenderer)
 	{
-		$this->Redis             = $Redis;
-		$this->RequestParser     = $RequestParser;
-		$this->PageRenderer = $PageRenderer;
+		$this->Redis         = $Redis;
+		$this->RequestParser = $RequestParser;
+		$this->PageRenderer  = $PageRenderer;
 	}
 
 	/**
@@ -41,10 +40,25 @@ class DBKey implements \Jamm\MVC\Controllers\IController
 			$Response->setBody('Can not fetch key info');
 			return false;
 		}
-
+		$arguments = $this->RequestParser->getRequestArguments();
+		if (isset($arguments['delete']))
+		{
+			$this->delKey($DBKey);
+		}
 		$template = $this->PageRenderer->renderPage(
 			'Key.twig', array('key' => $DBKey));
 		$Response->setBody($template);
+	}
+
+	protected function delKey(\Jamm\RedisDashboard\Model\DataStructure\DBKey $DBKey)
+	{
+		if (!$this->Redis->Select($DBKey->database)) return false;
+		if ($this->Redis->Del($DBKey->title))
+		{
+			$DBKey->value = null;
+			return true;
+		}
+		return false;
 	}
 
 	protected function getNewDBKeyModel(\Jamm\Memory\IRedisServer $Redis)

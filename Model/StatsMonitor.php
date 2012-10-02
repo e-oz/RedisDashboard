@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\Model;
-
 class StatsMonitor
 {
 	private $Redis;
@@ -44,7 +43,6 @@ class StatsMonitor
 				$this->info[trim($exploded_line[0])] = trim($exploded_line[1]);
 			}
 		}
-
 		$stats                 = array();
 		$stats[]               = $this->getStatFromInfoKey('redis_version');
 		$stats[]               = $this->getStatFromInfoKey('uptime_in_seconds');

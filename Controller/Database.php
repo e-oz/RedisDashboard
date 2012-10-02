@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\Controller;
-
 class Database implements \Jamm\MVC\Controllers\IController
 {
 	private $Redis;
@@ -11,9 +10,9 @@ class Database implements \Jamm\MVC\Controllers\IController
 								\Jamm\MVC\Controllers\IRequestParser $RequestParser,
 								\Jamm\MVC\Views\IPageRenderer $PageRenderer)
 	{
-		$this->Redis             = $Redis;
-		$this->RequestParser     = $RequestParser;
-		$this->PageRenderer = $PageRenderer;
+		$this->Redis         = $Redis;
+		$this->RequestParser = $RequestParser;
+		$this->PageRenderer  = $PageRenderer;
 	}
 
 	/**
@@ -30,7 +29,6 @@ class Database implements \Jamm\MVC\Controllers\IController
 			$Response->setBody('Can not select database '.$db_index);
 			return false;
 		}
-
 		$template = $this->PageRenderer->renderPage('Database.twig', array('database' => $Database));
 		$Response->setBody($template);
 	}

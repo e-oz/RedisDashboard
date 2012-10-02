@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\View;
-
 class PageRenderer extends \Jamm\MVC\Views\TwigRenderer
 {
 	public function __construct()

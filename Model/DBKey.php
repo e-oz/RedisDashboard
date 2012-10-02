@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\Model;
-
 class DBKey
 {
 	private $Redis;
@@ -24,7 +23,6 @@ class DBKey
 		{
 			return false;
 		}
-
 		$Key->type = $this->Redis->Type($Key->title);
 		switch ($Key->type)
 		{

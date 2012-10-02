@@ -5,10 +5,10 @@
 <h2>Keys: {{ database.keys_count }}</h2>
 
 {% if database.keys %}
-	<ul>
+<ul>
 	{% for key in database.keys %}
-		<li><a href="{{ base_url }}/key/{{ key|url_encode() }}/in/{{ database.title }}">{{ key }}</a></li>
+	<li><a href="{{ base_url }}/key/{{ key|url_encode() }}/in/{{ database.title }}">{{ key }}</a></li>
 	{% endfor %}
-	</ul>
+</ul>
 {% endif %}
 {% endblock %}

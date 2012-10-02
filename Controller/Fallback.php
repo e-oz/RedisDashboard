@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\Controller;
-
 class Fallback implements \Jamm\MVC\Controllers\IController
 {
 	private $Redis;
@@ -9,7 +8,7 @@ class Fallback implements \Jamm\MVC\Controllers\IController
 	public function __construct(\Jamm\Memory\IRedisServer $Redis,
 								\Jamm\MVC\Views\IPageRenderer $PageRenderer)
 	{
-		$this->Redis             = $Redis;
+		$this->Redis        = $Redis;
 		$this->PageRenderer = $PageRenderer;
 	}
 
@@ -18,7 +17,6 @@ class Fallback implements \Jamm\MVC\Controllers\IController
 		$StatsMonitor = $this->getNewStatsMonitor($this->Redis);
 		$stats        = $StatsMonitor->getStats();
 		$databases    = $StatsMonitor->getDatabases();
-
 		$template = $this->PageRenderer->renderPage(
 			'IndexPage.twig', array('databases' => $databases, 'stats' => $stats));
 		$Response->setBody($template);

@@ -1,6 +1,5 @@
 <?php
 namespace Jamm\RedisDashboard\Model\DataStructure;
-
 class Database
 {
 	public $title;
